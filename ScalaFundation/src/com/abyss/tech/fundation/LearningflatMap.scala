@@ -13,7 +13,7 @@ fruits.flatMap[Char,Seq[Char]](_.toUpperCase)
 //res1: Seq[Char] = List(A, P, P, L, E, B, A, N, A, N, A, O, R, A, N, G, E)
 
 val aList= List(Some(1), Some(2), None, Some(3), None)
-Console.print(aList.flatten)
+Console.println(aList.flatten)
 
 Console.println(List("abc","bcd").flatten)
 }

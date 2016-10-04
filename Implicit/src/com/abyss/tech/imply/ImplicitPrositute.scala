@@ -5,7 +5,7 @@ package com.abyss.tech.imply
 
  */
 import com.abyss.tech.imply.transcation._
-class MoneyCollect(val amount:Int)
+case class MoneyCollect(val amount:Int)
 class ImplicitPrositute(val position:String)(implicit val cash:MoneyCollect) {
   def payOut:Unit = Console.println(s"$position with ${cash.amount}") 
 }

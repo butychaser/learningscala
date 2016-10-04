@@ -7,5 +7,5 @@ package com.abyss.tech.imply.transcation
 import com.abyss.tech.imply._
 
 object Pimp {
-  implicit val cash = new MoneyCollect(100)
+  implicit val cash = MoneyCollect(100)
 }

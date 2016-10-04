@@ -4,6 +4,7 @@
  * @author leonardo
  */
 object HelloWorld extends App {
+  import scala.util.Try
   val str1 = "Hello World, Scala!"
   Console.println(str1)
   val alist = List[String]("Hello" , "World" , "Scala")
@@ -19,9 +20,11 @@ object HelloWorld extends App {
     case _ => -1
   }
   
+  val someLIst = List(Try(1),Try(2),Try(3))
   
   aMap.get("BBB").foreach { Option(_).foreach { Console.println(_)}  }
   Console.println(integer)
+  Console.println(Try(1).flatMap(a=>Try(0).map{ b => a/b }))
   
   val bag1 = List("1", "2", "foo", "3", "bar")
   val bag2 = List(1,2,3,4)

@@ -4,7 +4,7 @@
  * @author leonardo
  */
 object MergeSortAlgorithm {
-  def msort [T] (less:(T,T)=>Boolean)( xs: List[T]) : List[T] = {
+  def msort [T]( xs: List[T]) (less:(T,T)=>Boolean) : List[T] = {
     def merge (ys: List[T], zs:List[T]):List[T] = {
       (ys, zs) match  {
            case(_, Nil) => ys
@@ -21,7 +21,7 @@ object MergeSortAlgorithm {
     else
     {
       val(ys, zs) = xs splitAt n
-      merge(msort(less)(ys), msort(less)(zs))
+      merge(msort(ys)(less), msort(zs)(less))
     }
   }
  

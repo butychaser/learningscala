@@ -6,7 +6,7 @@
 object MergeSortAlgorithClient extends App {
   val comparator = (x:Int, y:Int) => {x < y}
   val list = List(4 ,3 ,3 ,1)
-  //Console.println(MergeSortAlgorithm.msort(comparator)(list))
+  Console.println(MergeSortAlgorithm.msort(list){_<_})
   Console.println(List.range(1, 5) map[List[Int],List[List[Int]]](i=> List.range(1, i)))
   Console.println(List.range(1, 5) flatMap[Int,List[Int]](i=> List.range(1, i)))
   Console.println(List.range(1, 5) map[List[(Int,Int)],List[List[(Int,Int)]]](i=> List.range(1, i) map (j=>(i,j))))

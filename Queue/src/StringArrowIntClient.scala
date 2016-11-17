@@ -17,4 +17,19 @@ object StringArrowIntClient extends App {
       case bbb:List[StringArrowInt] => { bbb.foreach( abbb => Console.println( abbb.abc)) }  
       case _ => }
   )
+  
+  val strKeyWithNone = scala.collection.mutable.Map.empty[String,Option[StringArrowInt]]
+  strKeyWithNone +=("aaa" ->None)
+  strKeyWithNone +=("bbb" ->None)
+  strKeyWithNone +=("ccc" ->None)
+  if(strKeyWithNone.get("abc").isDefined)
+    Console.println("abc is a key")
+  else 
+    Console.println("abc is not  a key")
+     if(strKeyWithNone.get("aaa").isDefined)
+    Console.println(s"aaaa is a key ${strKeyWithNone.get("aaa")}")   
+    
+     if(strKeyWithNone.find(_._1 == "aaa").isDefined)
+       Console.println(s"aaaa is a key ${strKeyWithNone.find(_._1 == "aaa").get._2}")   
+    
 }

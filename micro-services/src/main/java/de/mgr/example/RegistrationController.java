@@ -27,7 +27,7 @@ public class RegistrationController {
             UserRepository.fakeUserRepository.put(user.getMail(), user);
         }
 
-        return new UserResult("AAA", "BBBB");
+        return new UserResult("AAA", "BBBB", user);
     }
 
     @ExceptionHandler

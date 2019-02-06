@@ -1,0 +1,12 @@
+a list:
+- action : delete
+  value : 1
+- action : update
+  value : 2
+- action : create
+  value : 3
+a string: bla
+another dict:
+  foo: bar
+  key: value
+  the answer: 42

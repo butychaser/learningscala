@@ -16,5 +16,10 @@ import io
 with open("data.yaml", 'r') as stream:
     data_loaded = yaml.load(stream)
 print(data_loaded['a list'])
-
+data_loaded['a list']
+actions  =  data_loaded['a list']
+result = list(filter(lambda x: x['action'] == 'update', actions))
+print(result)
+expectedResult = [d for d in actions if d['action'] == 'create']
+print(expectedResult)
 #print(data == data_loaded)

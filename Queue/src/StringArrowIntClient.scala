@@ -26,7 +26,7 @@ object StringArrowIntClient extends App {
     Console.println("abc is a key")
   else 
     Console.println("abc is not  a key")
-     if(strKeyWithNone.get("aaa").isDefined)
+  if(strKeyWithNone.get("aaa").isDefined)
     Console.println(s"aaaa is a key ${strKeyWithNone.get("aaa")}")   
     
      if(strKeyWithNone.find(_._1 == "aaa").isDefined)

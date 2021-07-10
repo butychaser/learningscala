@@ -1,0 +1,6 @@
+UltraCompare
+ - uc.pdf -> uc.zip -> uc.zip -> uc.exe
+ - unrar.pdf -> unrar.zip -> unrar.dll
+
+Araxis Merge
+ -Merge.pdf -> Merge.7z -> Merge.7z -> /Merge/*.exe *.dll 

@@ -12,8 +12,7 @@ class PennyHooker extends Whore[String] with Prostitute[Map[String,Int]]{
      
       def collectt(sss : Map[String, Int]):Map[String, Int] = 
      {
-      val aMap = Map[String, Int]("aaa"->111)
-      aMap.asInstanceOf[Map[String, Int]]
+      Map[String, Int]("aaa"->111)
      }
       
       override def collectt (t:String):String = {"aaa"}

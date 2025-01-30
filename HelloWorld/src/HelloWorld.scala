@@ -1,5 +1,4 @@
 
-
 /**
  * @author leonardo
  */
@@ -7,11 +6,11 @@ object HelloWorld extends App {
   import scala.util.Try
   val str1 = "Hello World, Scala!"
   Console.println(str1)
-  val alist = List[String]("Hello" , "World" , "Scala")
-  alist.foreach(S=>(Console.println(S)))
+  val alist = List[String]("Hello " , "World " , "Scala ")
+  alist.foreach(S=>(Console.print(S)))
   //alist.sort((s,t)=>s.charAt(0).toLower() < t.charAt(0).toLower())
   //alist.sort((s, t) =>s.charAt(0).toLower<t.charAt(0).toLower))
-  alist.filter { x => x.length()>4 }
+  alist.filter ( x => x.length()>4 )
   val aMap = Map("AAA"->1, "BBB"->2, "CCC"->3)
   val integer =  aMap.get("AAA") match
   {
@@ -30,6 +29,13 @@ object HelloWorld extends App {
   val bag2 = List(1,2,3,4)
   val sum = bag1.map(a=>toInt(a))
   Console.println(sum.flatten)
+  
+  val l1 = List[Int](1,2)
+  val l2 = List[Int](3,4)
+//  val result = l1.map(x =>l2.flatMap(y => x+y))
+  val result = alist.flatMap(x => 1+x)
+ 
+  Console.println(s"result = " + result)
   
   def toInt(in: String): Option[Int] = {
     import scala.util.Try

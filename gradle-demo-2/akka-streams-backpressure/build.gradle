@@ -1,0 +1,110 @@
+// Adding ScalaStyle support
+
+plugins {
+    // Apply the scala Plugin to add support for Scala.
+    id 'scala'
+
+    // Apply the java-library plugin for API and implementation separation.
+    id 'application'
+
+    id 'project-report'
+}
+
+repositories {
+    // Use Maven Central for resolving dependencies.
+    mavenCentral()
+}
+
+group 'io.github.vigoo'
+mainClassName = "com.skapadia.akka.streams.StreamApp"
+
+repositories {
+    mavenCentral()
+}
+def scalaMajor = "2.13"
+def scalaMinor = "2"
+def akkaVersion = "2.8.8"
+
+dependencies {
+    implementation "org.scala-lang:scala-compiler:$scalaMajor.$scalaMinor"
+    implementation "org.scala-lang:scala-library:$scalaMajor.$scalaMinor"
+    implementation "com.typesafe.akka:akka-actor_$scalaMajor:$akkaVersion"
+    implementation "com.typesafe.akka:akka-stream_$scalaMajor:$akkaVersion"
+
+    // This dependency is used internally, and not exposed to consumers on their own compile classpath.
+//    implementation libs.guava
+//    (
+//            [group: 'org.scala-lang', name: 'scala-compiler', version: "$scalaMajor.$scalaMinor"],
+//            [group: 'org.scala-lang', name: 'scala-library', version: "$scalaMajor.$scalaMinor"],
+//            [group: 'com.typesafe.akka', name: "akka-actor_$scalaMajor", version: akkaVersion],
+//            [group: 'com.typesafe.akka', name: "akka-stream_$scalaMajor", version: akkaVersion],
+//
+//    )
+
+//    testCompile(
+//            [group: 'junit', name: 'junit', version: '4.12'],
+//            [group: 'org.specs2', name: "specs2-core_$scalaMajor", version: '3.8.5.1'],
+//            [group: 'org.specs2', name: "specs2-junit_$scalaMajor", version: '3.8.5.1'],
+//    )
+}
+
+
+
+testing {
+    suites {
+        // Configure the built-in test suite
+        test {
+            // Use JUnit4 test framework
+            useJUnit('4.13.2')
+
+            dependencies {
+                // Use Scalatest for testing our library
+                implementation libs.scalatest.v2.v13
+                implementation libs.junit.v4.v13.v2.v13
+
+                // Need scala-xml at test runtime
+                runtimeOnly libs.scala.xml.v2.v13
+                implementation "junit:junit:4.12"
+//                implementation "org.specs2:specs2-core_$scalaMajor:3.8.5.1"
+//                implementation "org.specs2:specs2-junit_$scalaMajor:3.8.5.1"
+
+
+                // Need scala-xml at test runtime
+            }
+        }
+    }
+}
+// Specifying the main class for the 'application' plugin
+jar {
+    manifest {
+        attributes("Main-Class": mainClassName)
+    }
+}
+
+// Workaround for Gradle 3.+ and IDEA (https://discuss.gradle.org/t/idea-integration-with-scala-plugin-broken-since-gradle-3-0-no-such-property-daemonserver/19159/2)
+ScalaCompileOptions.metaClass.daemonServer = true
+ScalaCompileOptions.metaClass.fork = true
+ScalaCompileOptions.metaClass.useAnt = false
+ScalaCompileOptions.metaClass.useCompileDaemon = false
+
+tasks.withType(ScalaCompile) {
+//    scalaCompileOptions.additionalParameters = [ "-unchecked", "-deprecation", "-feature", "-Xfatal-warnings", "-encoding", "utf8"]
+}
+
+// ScalaStyle config, by putting it to the project subdirectory, IDEA will automatically use it
+
+// Run ScalaStyle with the tests
+
+// specs2 console logging
+
+// Generating gradle wrapper so people don't have to have the Gradle version preinstalled
+task wrapper(type: Wrapper) {
+    gradleVersion = "3.1"
+}
+
+// Apply a specific Java toolchain to ease working on different environments.
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(11)
+    }
+}

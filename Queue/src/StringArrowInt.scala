@@ -3,6 +3,6 @@
 /**
  * @author Leonardo
  */
-case class StringArrowInt(abc:String, _123:Int) {
+case class StringArrowInt( val abc:String, val _123:Int) {
   
 }

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ScalaCompilerConfiguration">
+    <profile name="Gradle 1" modules="gradle-demo-2.akka-streams-backpressure.main,gradle-demo-2.akka-streams-backpressure.test,gradle-demo-2.app.main,gradle-demo-2.app.test,gradle-demo-2.lib.main,gradle-demo-2.lib.test">
+      <option name="deprecationWarnings" value="true" />
+      <option name="uncheckedWarnings" value="true" />
+    </profile>
+  </component>
+</project>

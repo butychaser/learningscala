@@ -5,8 +5,7 @@ package com.abyss.tech.fundation
  */
 object LearningflatMap extends App {
  val fruits = Seq("apple", "banana", "orange")
- val output = new java.io.File("1.txt")
- val write = new java.io.PrintWriter(output)
+
 
  fruits.map[String,Seq[String]](_.toUpperCase)
 //res0: Seq[java.lang.String] = List(APPLE, BANANA, ORANGE)
@@ -24,12 +23,18 @@ def flipTwice(x:Double)(flip:Double=>Double) = {
 }
 Console.println(flipTwice(1){_+1})
 
-logDate{ _.append("Hello world, Scala!!!!\n") }
-logDate{ _.append("This is a function literal!!!!") }
+val flipTwiceOne = flipTwice(1)_
+val result = flipTwiceOne(_+1)
+Console.println(s"$result result")
+
+val output = new java.io.File("1.txt")
+val write = new java.io.PrintWriter(output)
+logDate (write){_.append("Hello world, Scala!!!!\n") }
+logDate (write){_.append("This is a function literal!!!!") }
 
 
  
-  def logDate(op:java.io.PrintWriter=>Unit) = {
+  def logDate(write:java.io.PrintWriter)(op:java.io.PrintWriter=>Unit) = {
    
    try{
      op(write)
@@ -39,7 +44,16 @@ logDate{ _.append("This is a function literal!!!!") }
      write.close
    }
  }
+  
+  def twiceOp(input:Double)(op:Double =>Double) ={
+   op(op(input))
 }
- 
+  val  useTwiceOp = twiceOp(2)_
+  val userTwiceOpp = useTwiceOp{_+2}
+  Console.print(userTwiceOpp)
+}
+
+
+
 
 

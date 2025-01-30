@@ -6,7 +6,7 @@ package com.abyss.tech.extract
 object ProstitutePositionApp extends App {
   val str = "Lily,missionary"
   val (name,service) = str match{
-    case ProstituteAction(alias,position) => (alias,position)
+    case ProstituteAction(alias,position, "aaa") => (alias,position)
     case _ =>("Wrong hooker", "Wrong service")
   }
   

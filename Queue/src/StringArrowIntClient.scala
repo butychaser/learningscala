@@ -9,7 +9,7 @@ object StringArrowIntClient extends App {
   Console.println(bMap)
   Console.println(bMap.keys)
   Console.println(bMap.values)
-  val aList = aMap.map[Int,List[Int]](_._123+1000)
+  val aList = aMap.map[Int,List[Int]]{ case StringArrowInt(k,v) => v+2000}//(_._123+1000)
   Console.println(aList)
   val bList = aMap.flatMap[Char,List[Char]](_.abc)
   Console.println(bList)
@@ -26,6 +26,8 @@ object StringArrowIntClient extends App {
     Console.println("abc is a key")
   else 
     Console.println("abc is not  a key")
+    Console.println(s"abc is not a key ${strKeyWithNone.get("abc")}")   
+
   if(strKeyWithNone.get("aaa").isDefined)
     Console.println(s"aaaa is a key ${strKeyWithNone.get("aaa")}")   
     
